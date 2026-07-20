@@ -19,6 +19,7 @@ export default function Layout() {
             <Link to="/mapa" className={`${isActive('/mapa')} pb-1`}>Mapa Mental</Link>
             <Link to="/cronologia" className={`${isActive('/cronologia')} pb-1`}>Cronología</Link>
             <Link to="/evidencia" className={`${isActive('/evidencia')} pb-1`}>Evidencia</Link>
+            <Link to="/yaldabaoth" className={`${isActive('/yaldabaoth')} pb-1`}>Pruebas</Link>
             <Link to="/biblioteca" className={`${isActive('/biblioteca')} pb-1`}>Biblioteca</Link>
           </nav>
         </div>

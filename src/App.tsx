@@ -5,6 +5,7 @@ import Library from './components/Library';
 import BookDetail from './components/BookDetail';
 import Chronology from './components/Chronology';
 import JesusEvidence from './components/JesusEvidence';
+import YaldabaothEvidence from './components/YaldabaothEvidence';
 
 function HomePage() {
   return (
@@ -44,6 +45,12 @@ function HomePage() {
             12 fuentes no-bíblicas que confirman la existencia de Jesús. Tácito, Josefo, el Talmud, y más — con citas originales, contexto y valoración histórica.
           </p>
         </a>
+        <a href="/yaldabaoth" className="block p-6 bg-parchment-50 border-2 border-parchment-300 rounded-xl hover:border-parchment-500 transition-all hover:shadow-lg">
+          <h2 className="text-xl font-bold text-parchment-800 mb-2">Pruebas Irrefutables</h2>
+          <p className="text-parchment-600 text-sm">
+            39 evidencias de que Yaldabaoth es el Dios Creador = Yahvé del AT. Textos gnósticos, Biblia, historia y Kabbalah — con citas, argumentos y conexiones.
+          </p>
+        </a>
       </div>
 
       <div className="bg-parchment-50 border border-parchment-300 rounded-xl p-6 mb-8">
@@ -78,6 +85,7 @@ export default function App() {
           <Route path="/biblioteca" element={<Library />} />
           <Route path="/cronologia" element={<Chronology />} />
           <Route path="/evidencia" element={<JesusEvidence />} />
+          <Route path="/yaldabaoth" element={<YaldabaothEvidence />} />
           <Route path="/libro/:id" element={<BookDetail />} />
         </Route>
       </Routes>
