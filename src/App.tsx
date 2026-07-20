@@ -4,6 +4,7 @@ import MindMap from './components/MindMap';
 import Library from './components/Library';
 import BookDetail from './components/BookDetail';
 import Chronology from './components/Chronology';
+import JesusEvidence from './components/JesusEvidence';
 
 function HomePage() {
   return (
@@ -35,6 +36,12 @@ function HomePage() {
           <h2 className="text-xl font-bold text-parchment-800 mb-2">Cronología</h2>
           <p className="text-parchment-600 text-sm">
             Línea de tiempo completa con todos los textos en su contexto histórico. Conexión Bíblica Pura — solo libros con vínculo textual directo con la Biblia.
+          </p>
+        </a>
+        <a href="/evidencia" className="block p-6 bg-parchment-50 border-2 border-parchment-300 rounded-xl hover:border-parchment-500 transition-all hover:shadow-lg">
+          <h2 className="text-xl font-bold text-parchment-800 mb-2">Evidencia Histórica</h2>
+          <p className="text-parchment-600 text-sm">
+            12 fuentes no-bíblicas que confirman la existencia de Jesús. Tácito, Josefo, el Talmud, y más — con citas originales, contexto y valoración histórica.
           </p>
         </a>
       </div>
@@ -70,6 +77,7 @@ export default function App() {
           <Route path="/mapa" element={<MindMap />} />
           <Route path="/biblioteca" element={<Library />} />
           <Route path="/cronologia" element={<Chronology />} />
+          <Route path="/evidencia" element={<JesusEvidence />} />
           <Route path="/libro/:id" element={<BookDetail />} />
         </Route>
       </Routes>
