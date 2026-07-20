@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import * as pdfjs from 'pdfjs-dist';
 
-const PDF_JS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.mjs';
+// Worker CDN — necesario para que pdfjs procese los PDFs en segundo plano
+pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.mjs';
 
 interface Props {
   url: string;
@@ -21,9 +23,7 @@ export default function PdfViewer({ url, title }: Props) {
     setLoading(true);
     setError('');
     try {
-      const pdfjs = await import(/* @vite-ignore */ PDF_JS_CDN);
-      pdfjs.GlobalWorkerOptions.workerSrc = PDF_JS_CDN;
-      const doc = await pdfjs.getDocument(url).promise;
+      const doc = await pdfjs.getDocument({ url }).promise;
       pdfDocRef.current = doc;
       setNumPages(doc.numPages);
       setPageNum(1);
@@ -47,7 +47,7 @@ export default function PdfViewer({ url, title }: Props) {
       canvas.width = viewport.width;
       canvas.height = viewport.height;
 
-      // Parchment background for the page
+      // Fondo pergamino para la página
       ctx.fillStyle = '#fdf8f0';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -77,7 +77,6 @@ export default function PdfViewer({ url, title }: Props) {
     if (pdfDocRef.current) renderPage(pageNum);
   }, [scale, pageNum, renderPage]);
 
-  // Cleanup
   useEffect(() => {
     return () => { if (renderTaskRef.current) renderTaskRef.current.cancel(); };
   }, []);
@@ -105,24 +104,39 @@ export default function PdfViewer({ url, title }: Props) {
             className="px-2 py-1 text-xs rounded bg-parchment-50 hover:bg-parchment-300 border border-parchment-400 text-parchment-700"
             title="Acercar"
           >+</button>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 px-2 py-1 text-xs rounded bg-parchment-700 hover:bg-parchment-800 text-parchment-50 border border-parchment-700"
+            title="Descargar PDF"
+          >
+            ↓
+          </a>
         </div>
       </div>
 
-      {/* Viewer area */}
+      {/* Viewer */}
       <div className="flex flex-col items-center bg-parchment-100 p-4 min-h-[500px] relative">
         {loading && (
           <div className="flex items-center justify-center py-20 text-parchment-500 text-sm italic">
-            Cargando PDF...
+            Cargando PDF desde Archive.org...
           </div>
         )}
         {error && (
           <div className="flex items-center justify-center py-20 text-parchment-700 text-sm">
-            <div className="text-center">
-              <p className="mb-2">⚠️ No se pudo cargar el PDF</p>
-              <p className="text-xs text-parchment-500">{error}</p>
-              <button onClick={loadPDF} className="mt-3 text-xs px-3 py-1.5 rounded bg-parchment-300 hover:bg-parchment-400 text-parchment-800">
-                Reintentar
-              </button>
+            <div className="text-center max-w-sm">
+              <p className="mb-1 font-bold">⚠️ Error al cargar</p>
+              <p className="text-xs text-parchment-500 mb-3">{error}</p>
+              <div className="flex gap-2 justify-center">
+                <button onClick={loadPDF} className="text-xs px-3 py-1.5 rounded bg-parchment-300 hover:bg-parchment-400 text-parchment-800">
+                  Reintentar
+                </button>
+                <a href={url} target="_blank" rel="noopener noreferrer"
+                   className="text-xs px-3 py-1.5 rounded bg-parchment-700 hover:bg-parchment-800 text-parchment-50">
+                  Descargar PDF
+                </a>
+              </div>
             </div>
           </div>
         )}
@@ -136,7 +150,6 @@ export default function PdfViewer({ url, title }: Props) {
           }}
         />
 
-        {/* Page nav */}
         {numPages > 0 && !loading && !error && (
           <div className="flex items-center gap-3 mt-4 text-xs text-parchment-700">
             <button
