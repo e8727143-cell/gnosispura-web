@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import MindMap from './components/MindMap';
 import Library from './components/Library';
 import BookDetail from './components/BookDetail';
+import Chronology from './components/Chronology';
 
 function HomePage() {
   return (
@@ -30,10 +31,10 @@ function HomePage() {
             Navega los 50 libros organizados por categorías. Busca por título, autor o tema.
           </p>
         </a>
-        <a href="/biblioteca" className="block p-6 bg-parchment-50 border-2 border-parchment-300 rounded-xl hover:border-parchment-500 transition-all hover:shadow-lg">
-          <h2 className="text-xl font-bold text-parchment-800 mb-2">Lector de PDFs</h2>
+        <a href="/cronologia" className="block p-6 bg-parchment-50 border-2 border-parchment-300 rounded-xl hover:border-parchment-500 transition-all hover:shadow-lg">
+          <h2 className="text-xl font-bold text-parchment-800 mb-2">Cronología</h2>
           <p className="text-parchment-600 text-sm">
-            Lee cada texto directamente en la app con visor embebido desde Archive.org.
+            Línea de tiempo completa con todos los textos en su contexto histórico. Conexión Bíblica Pura — solo libros con vínculo textual directo con la Biblia.
           </p>
         </a>
       </div>
@@ -68,6 +69,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/mapa" element={<MindMap />} />
           <Route path="/biblioteca" element={<Library />} />
+          <Route path="/cronologia" element={<Chronology />} />
           <Route path="/libro/:id" element={<BookDetail />} />
         </Route>
       </Routes>

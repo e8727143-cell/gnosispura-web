@@ -17,6 +17,7 @@ export default function Layout() {
           <nav className="flex gap-6 text-sm font-medium">
             <Link to="/" className={`${isActive('/')} pb-1`}>Inicio</Link>
             <Link to="/mapa" className={`${isActive('/mapa')} pb-1`}>Mapa Mental</Link>
+            <Link to="/cronologia" className={`${isActive('/cronologia')} pb-1`}>Cronología</Link>
             <Link to="/biblioteca" className={`${isActive('/biblioteca')} pb-1`}>Biblioteca</Link>
           </nav>
         </div>
