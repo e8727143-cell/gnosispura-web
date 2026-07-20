@@ -22,8 +22,6 @@ const CATEGORY_HEADER_BG: Record<string, string> = {
 };
 
 function BookCover({ book, catColor }: { book: typeof books[number]; catColor: typeof CATEGORY_COLORS[string] }) {
-  // Generate a simple decorative pattern based on book id
-  const patternId = book.id.length;
   const stripes = Array.from({ length: 5 }, (_, i) => i);
 
   return (
