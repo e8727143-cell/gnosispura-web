@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { getBook, getCategory } from '../data/books';
 import { getConnectionsForBook } from '../data/connections';
+import PdfViewer from './PdfViewer';
 
 export default function BookDetail() {
   const { id } = useParams<{ id: string }>();
@@ -17,8 +18,6 @@ export default function BookDetail() {
 
   const cat = getCategory(book.category);
   const bookConnections = getConnectionsForBook(book.id);
-  const archiveItemId = 'antiguo_testamento_griego';
-
   return (
     <div className="p-6 max-w-5xl mx-auto">
       {/* Breadcrumb */}
@@ -117,37 +116,7 @@ export default function BookDetail() {
         {/* PDF viewer */}
         <div className="lg:col-span-3">
           {book.archiveUrl ? (
-            <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl overflow-hidden">
-              {/* Toolbar */}
-              <div className="flex items-center justify-between p-3 border-b border-parchment-300 bg-parchment-100/50">
-                <h2 className="text-sm font-bold text-parchment-700">Visor PDF</h2>
-                <div className="flex gap-2">
-                  <a
-                    href={book.archiveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs px-3 py-1.5 rounded-lg bg-parchment-200 hover:bg-parchment-300 text-parchment-700 transition-colors"
-                  >
-                    Descargar PDF
-                  </a>
-                  <a
-                    href={`https://archive.org/details/${archiveItemId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs px-3 py-1.5 rounded-lg bg-parchment-700 hover:bg-parchment-800 text-parchment-50 transition-colors"
-                  >
-                    Ver en Archive.org
-                  </a>
-                </div>
-              </div>
-              {/* PDF iframe */}
-              <iframe
-                src={book.archiveUrl}
-                className="w-full min-h-[700px]"
-                style={{ border: 'none' }}
-                title={book.title}
-              />
-            </div>
+            <PdfViewer url={book.archiveUrl} title={book.title} />
           ) : (
             <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl p-6 min-h-[600px] flex flex-col items-center justify-center text-center">
               <div className="text-parchment-400 text-6xl mb-4 font-serif">?</div>
