@@ -18,6 +18,7 @@ export const books: Book[] = [
     category: 'canonicos',
     description: 'El AT en su traducción griega (LXX), usada por los apóstoles y el NT. Fundamental para detectar diferencias entre el Dios del AT (Yaldabaoth) y el Padre revelado por Jesús.',
     language: 'Griego/Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/antiguo_testamento_griego.pdf',
     highlights: ['Base textual para comparar OT God vs Padre de Jesús', 'Isaías 45:7 — "Yo creo el mal"', 'Éxodo 20:5 — "Dios celoso"'],
   },
   {
@@ -27,6 +28,7 @@ export const books: Book[] = [
     category: 'canonicos',
     description: 'El NT en su texto crítico griego. Clave para demostrar que Jesús revela a un Padre distinto al Yaldabaoth del AT.',
     language: 'Griego/Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/nuevo_testamento_griego.pdf',
     highlights: ['Juan 1:1 — Logos como primera emanación', 'Juan 8:44 — "Vuestro padre el diablo"', '2 Cor 4:4 — "El dios de este siglo"'],
   },
   {
@@ -36,6 +38,7 @@ export const books: Book[] = [
     category: 'canonicos',
     description: 'La Biblia en arameo, la lengua semítica del Jesús histórico. Ofrece matices no presentes en el griego.',
     language: 'Arameo',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/biblia_pshita_siriaca.pdf',
   },
   {
     id: 'kadosh',
@@ -44,6 +47,7 @@ export const books: Book[] = [
     category: 'canonicos',
     description: 'Versión de estudio con perspectiva hebrea/israelita que restaura nombres originales (Yahweh, Elohim, Yeshúa).',
     language: 'Hebreo/Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/biblia_kadosh_estudio.pdf',
   },
   {
     id: 'torah',
@@ -52,6 +56,7 @@ export const books: Book[] = [
     category: 'canonicos',
     description: 'Génesis a Deuteronomio en hebreo original. Base para analizar la creación por Yaldabaoth, la caída de Edén, y la Ley como instrumento del Demiurgo.',
     language: 'Hebreo/Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/torah_hebreo_espanol.pdf',
     highlights: ['Génesis 3:22 — "Como uno de nosotros" (plural divino del Pleroma)', 'Génesis 1:26 — "Hagamos al hombre"', 'Éxodo 3:14 — "Yo Soy el que Soy" (Ehyeh)'],
   },
 
@@ -64,6 +69,7 @@ export const books: Book[] = [
     description: 'El texto pseudoepigráfico más importante para el NT. Citado en Judas 1:14-15. Revela los Vigilantes (ángeles caídos), el Hijo del Hombre preexistente, y el juicio final. Influye directamente en la cristología del NT.',
     language: 'Inglés con fragmentos griegos',
     date: '~300 a.C. - 100 d.C.',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/1_enoc_charles_1912.pdf',
     highlights: ['Capítulo de los Vigilantes (6-36)', 'Parábolas/Similitudes (37-71) — Hijo del Hombre', 'Libro de los Luminares (72-82)', 'Citado en Judas 1:14-15'],
   },
   {
@@ -73,6 +79,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Misma obra en versión íntegra. Confirma la tradición del Hijo del Hombre como figura divina preexistente, que Jesús adopta como título mesiánico en los evangelios sinópticos.',
     language: 'Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/1_enoc_completo.pdf',
   },
   {
     id: 'enoc2',
@@ -81,6 +88,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Expande el viaje de Enoc por los 10 cielos. Describe la creación angelical, la caída de Satán (Satanail), y la estructura del cosmos. Texto clave sobre la preexistencia del alma.',
     language: 'Eslavónico/Inglés',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/2_enoc_completo.pdf',
   },
   {
     id: 'enoc2_critico',
@@ -89,6 +97,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Edición académica con aparato crítico del texto eslavónico.',
     language: 'Inglés',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/2_enoc_geller_critico.pdf',
   },
   {
     id: 'enoc2_morfill',
@@ -97,6 +106,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Traducción clásica al inglés por Morfill y Charles.',
     language: 'Inglés',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/2_enoc_morfill_charles.pdf',
   },
   {
     id: 'enoc3',
@@ -106,6 +116,7 @@ export const books: Book[] = [
     description: 'Texto místico judío (Hejalot) que describe el ascenso de Rabí Ismael a través de los palacios celestiales. Metatrón como "el pequeño Yahweh". Conecta con la mística de la Merkabá y la Kabbalah.',
     language: 'Hebreo/Inglés',
     date: 'Siglo V-VI d.C.',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/3_enoc_odeberg.pdf',
   },
   {
     id: 'jasher',
@@ -114,6 +125,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Libro mencionado en Josué 10:13 y 2 Samuel 1:18. La versión existente es medieval (siglo XVI) pero preserva tradiciones orales antiguas sobre los patriarcas.',
     language: 'Español',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/jasher_libro_del_justo.pdf',
   },
   {
     id: 'jubileos',
@@ -131,6 +143,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Texto apocalíptico judío (siglo I-II d.C.) donde Abraham asciende al cielo y ve el trono de Dios, la creación, y la caída de Adán. Distingue entre el poder divino supremo y el "fuego" creador.',
     date: 'Siglo I-II d.C.',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/apocalipsis_abraham_box.pdf',
   },
   {
     id: 'asuncion_moises',
@@ -139,6 +152,7 @@ export const books: Book[] = [
     category: 'pseudepigrafos',
     description: 'Testamento apocalíptico atribuido a Moisés. Describe la historia de Israel hasta el Reino. Cita velada en Judas 1:9 sobre la disputa por el cuerpo de Moisés.',
     date: 'Siglo I d.C.',
+    archiveUrl: 'https://archive.org/download/antiguo_testamento_griego/asuncion_moises_charles.pdf',
   },
   {
     id: 'martirio_isaias',

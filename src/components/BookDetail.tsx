@@ -17,6 +17,7 @@ export default function BookDetail() {
 
   const cat = getCategory(book.category);
   const bookConnections = getConnectionsForBook(book.id);
+  const archiveItemId = 'antiguo_testamento_griego';
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -67,9 +68,25 @@ export default function BookDetail() {
               </div>
             )}
 
+            {/* Status badge */}
+            {book.archiveUrl ? (
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-green-100 text-green-800 border border-green-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+                  Disponible en Archive.org
+                </span>
+              </div>
+            ) : (
+              <div className="mb-4">
+                <span className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-parchment-200 text-parchment-600">
+                  ⏳ Pendiente de subir
+                </span>
+              </div>
+            )}
+
             {/* Connections list */}
             {bookConnections.length > 0 && (
-              <div>
+              <div className="mb-4">
                 <h3 className="text-sm font-bold text-parchment-800 mb-2">
                   Conexiones ({bookConnections.length})
                 </h3>
@@ -94,31 +111,53 @@ export default function BookDetail() {
                 </div>
               </div>
             )}
-
-            {/* PDF link */}
-            <div className="mt-4 pt-4 border-t border-parchment-300">
-              <p className="text-xs text-parchment-500 mb-2">
-                {book.archiveUrl
-                  ? 'Este texto está disponible en Archive.org'
-                  : 'PDF disponible localmente en la biblioteca'}
-              </p>
-            </div>
           </div>
         </div>
 
-        {/* PDF viewer (placeholder) */}
+        {/* PDF viewer */}
         <div className="lg:col-span-3">
-          <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl p-6 min-h-[600px] flex flex-col items-center justify-center text-center">
-            <div className="text-parchment-400 text-6xl mb-4">📖</div>
-            <h2 className="text-lg font-bold text-parchment-700 mb-2">Visor de PDF</h2>
-            <p className="text-sm text-parchment-500 max-w-md">
-              Cuando los PDFs estén subidos a Archive.org, aquí se mostrará el visor embebido
-              para leer el texto completo directamente en la app.
-            </p>
-            <p className="text-xs text-parchment-400 mt-4 italic">
-              Por ahora, explora las conexiones de este libro en el panel lateral.
-            </p>
-          </div>
+          {book.archiveUrl ? (
+            <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl overflow-hidden">
+              {/* Toolbar */}
+              <div className="flex items-center justify-between p-3 border-b border-parchment-300 bg-parchment-100/50">
+                <h2 className="text-sm font-bold text-parchment-700">Visor PDF</h2>
+                <div className="flex gap-2">
+                  <a
+                    href={book.archiveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 rounded-lg bg-parchment-200 hover:bg-parchment-300 text-parchment-700 transition-colors"
+                  >
+                    Descargar PDF
+                  </a>
+                  <a
+                    href={`https://archive.org/details/${archiveItemId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 rounded-lg bg-parchment-700 hover:bg-parchment-800 text-parchment-50 transition-colors"
+                  >
+                    Ver en Archive.org
+                  </a>
+                </div>
+              </div>
+              {/* PDF iframe */}
+              <iframe
+                src={book.archiveUrl}
+                className="w-full min-h-[700px]"
+                style={{ border: 'none' }}
+                title={book.title}
+              />
+            </div>
+          ) : (
+            <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl p-6 min-h-[600px] flex flex-col items-center justify-center text-center">
+              <div className="text-parchment-400 text-6xl mb-4 font-serif">?</div>
+              <h2 className="text-lg font-bold text-parchment-700 mb-2">PDF aún no disponible</h2>
+              <p className="text-sm text-parchment-500 max-w-md">
+                Este libro está pendiente de subir a Archive.org. Mientras tanto, explora sus conexiones
+                teológicas en el panel lateral.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
