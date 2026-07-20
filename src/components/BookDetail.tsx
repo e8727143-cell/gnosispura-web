@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { getBook, getCategory } from '../data/books';
 import { getConnectionsForBook } from '../data/connections';
-import PdfViewer from './PdfViewer';
+import BookReader from './BookReader';
 
 export default function BookDetail() {
   const { id } = useParams<{ id: string }>();
@@ -113,20 +113,9 @@ export default function BookDetail() {
           </div>
         </div>
 
-        {/* PDF viewer */}
+        {/* Book reader */}
         <div className="lg:col-span-3">
-          {book.archiveUrl ? (
-            <PdfViewer url={book.archiveUrl} title={book.title} />
-          ) : (
-            <div className="bg-parchment-50 border-2 border-parchment-300 rounded-xl p-6 min-h-[600px] flex flex-col items-center justify-center text-center">
-              <div className="text-parchment-400 text-6xl mb-4 font-serif">?</div>
-              <h2 className="text-lg font-bold text-parchment-700 mb-2">PDF aún no disponible</h2>
-              <p className="text-sm text-parchment-500 max-w-md">
-                Este libro está pendiente de subir a Archive.org. Mientras tanto, explora sus conexiones
-                teológicas en el panel lateral.
-              </p>
-            </div>
-          )}
+          <BookReader bookId={book.id} title={book.title} archiveUrl={book.archiveUrl} />
         </div>
       </div>
     </div>
