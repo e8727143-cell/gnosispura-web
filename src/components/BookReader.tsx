@@ -175,7 +175,6 @@ export default function BookReader({ bookId, title, archiveUrl }: Props) {
   // === NORMAL TEXT DISPLAY ===
   // Split text into paragraphs for rendering
   const paragraphs = fullText.split('\n\n').filter(Boolean);
-  const filteredParagraphs = paragraphs;
 
   return (
     <ReaderShell title={title} archiveUrl={archiveUrl}>
