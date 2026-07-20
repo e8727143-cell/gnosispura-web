@@ -87,9 +87,9 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
   const catBg = item.categoryId ? CAT_BG[item.categoryId] : undefined;
   const leftSide = index % 2 === 0;
   const isEvent = item.type === 'event';
-  const yearStr = item.endYearLabel
-    ? `${item.yearLabel} — ${item.endYearLabel}`
-    : item.yearLabel;
+  const yearStr = item.yearLabel
+    ? (item.endYearLabel ? `${item.yearLabel} — ${item.endYearLabel}` : item.yearLabel)
+    : '';
 
   if (isEvent) {
     return (
@@ -374,12 +374,14 @@ export default function Chronology() {
                           </p>
                         </div>
                         <div className="ml-auto text-right shrink-0">
+                        {group.era.yearLabel && (
                           <span className="text-xs font-mono" style={{ color: eraStyle.accent }}>
                             {group.era.yearLabel}
                             {group.era.endYearLabel && <> — {group.era.endYearLabel}</>}
                           </span>
-                          <div className="text-[10px]" style={{ color: `${eraStyle.text}77` }}>
-                            {group.items.length} textos
+                        )}
+                        <div className="text-[10px]" style={{ color: `${eraStyle.text}77` }}>
+                          {group.items.length} textos
                           </div>
                         </div>
                       </div>

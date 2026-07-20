@@ -7,7 +7,7 @@ export interface TimelineItem {
   id: string;
   type: 'era' | 'event' | 'book';
   year: number;
-  yearLabel: string;
+  yearLabel?: string;
   endYear?: number;
   endYearLabel?: string;
   title: string;
@@ -16,7 +16,7 @@ export interface TimelineItem {
   categoryId?: BookCategoryId;
   bookId?: string;
   icon?: string;
-  significance?: string; // for books — why it matters chronologically
+  significance?: string;
 }
 
 export const timeline: TimelineItem[] = [
